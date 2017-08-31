@@ -44,6 +44,14 @@ module Spotify
       run(:get, '/v1/me/tracks', [200])
     end
 
+    def me_top_tracks
+      run(:get, '/v1/me/top/tracks', [200])
+    end
+
+    def me_top_artists
+      run(:get, '/v1/me/top/artists', [200])
+    end
+
     # params:
     # - type: Required, The ID type, currently only 'artist' is supported
     # - limit: Optional. The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 50.
