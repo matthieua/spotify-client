@@ -44,12 +44,12 @@ module Spotify
       run(:get, '/v1/me/tracks', [200])
     end
 
-    def me_top_tracks
-      run(:get, '/v1/me/top/tracks', [200])
+    def me_top_tracks(params={})
+      run(:get, '/v1/me/top/tracks', [200], params)
     end
 
-    def me_top_artists
-      run(:get, '/v1/me/top/artists', [200])
+    def me_top_artists(params={})
+      run(:get, '/v1/me/top/artists', [200], params)
     end
 
     # params:
