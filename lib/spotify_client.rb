@@ -72,7 +72,7 @@ module Spotify
     # limit: [1-50]
     # offset: [0-100000]
     def user_playlists(user_id, limit = 20, offset = 0)
-      run(:get, "/v1/users/#{user_id}/playlists", [200])
+      run(:get, "/v1/users/#{user_id}/playlists?limit=#{limit}&offset=#{offset}", [200])
     end
 
     def user_playlist(user_id, playlist_id)
