@@ -79,9 +79,9 @@ module Spotify
       run(:get, "/v1/users/#{user_id}/playlists/#{playlist_id}", [200])
     end
 
-    def user_playlist_tracks(user_id, playlist_id, params = {})
+    def user_playlist_tracks(user_id, playlist_id, limit = 100, offset = 0, params = {})
       tracks = { 'items' => [] }
-      path = "/v1/users/#{user_id}/playlists/#{playlist_id}/tracks"
+      path = "/v1/users/#{user_id}/playlists/#{playlist_id}/tracks?limit=#{limit}&offset=#{offset}"
 
       while path
         response = run(:get, path, [200], params)
