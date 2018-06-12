@@ -49,6 +49,11 @@ module Spotify
       run(:delete, '/v1/me/tracks', [200], params)
     end
 
+    def remove_albums(albums_ids)
+      params = { ids: Array.wrap(albums_ids).join(',') }
+      run(:delete, '/v1/me/albums', [200], params)
+    end
+
     def save_tracks(tracks_ids)
       params = { ids: Array.wrap(tracks_ids).join(',') }
       run(:put, '/v1/me/tracks', [200], params)
