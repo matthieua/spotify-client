@@ -45,7 +45,7 @@ module Spotify
     end
 
     def remove_tracks(tracks_ids = nil)
-      if track_ids.nil?
+      if tracks_ids.nil?
         run(:delete, '/v1/me/tracks', [200])
       else
         params = { ids: Array.wrap(tracks_ids).join(',') }
