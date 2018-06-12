@@ -44,6 +44,11 @@ module Spotify
       run(:get, '/v1/me/tracks', [200])
     end
 
+    def save_tracks(tracks_ids)
+      params = { ids: Array.wrap(tracks_ids).join(',') }
+      run(:put, '/v1/me/tracks', [200], params)
+    end
+
     def me_albums
       run(:get, '/v1/me/albums', [200])
     end
@@ -139,6 +144,10 @@ module Spotify
     # client.truncate_user_playlist('1181346016', '7i3thJWDtmX04dJhFwYb0x')
     def truncate_user_playlist(user_id, playlist_id)
       replace_user_tracks_in_playlist(user_id, playlist_id, [])
+    end
+
+    def audio_features(track_id)
+      run(:get, "/v1/audio-features/#{track_id}", [200])
     end
 
     def album(album_id)
