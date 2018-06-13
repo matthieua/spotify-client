@@ -131,6 +131,7 @@ module Spotify
       if position
         params.merge!(position: position)
       end
+      byebug
       run(:post, "/v1/users/#{user_id}/playlists/#{playlist_id}/tracks", [201], JSON.dump(params), false)
     end
 
