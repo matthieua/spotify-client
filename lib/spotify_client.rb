@@ -127,12 +127,11 @@ module Spotify
     #
     # client.add_user_tracks_to_playlist('1181346016', '7i3thJWDtmX04dJhFwYb0x', %w(spotify:track:4iV5W9uYEdYUVa79Axb7Rh spotify:track:2lzEz3A3XIFyhMDqzMdcss))
     def add_user_tracks_to_playlist(user_id, playlist_id, uris = [], position = nil)
-      params = { uris: Array.wrap(uris)[0..99].join(',') }
+      params = { uris: uris }
       if position
         params.merge!(position: position)
       end
-      byebug
-      run(:post, "/v1/users/#{user_id}/playlists/#{playlist_id}/tracks", [201], JSON.dump(params), false)
+      run!(:post, "/v1/users/#{user_id}/playlists/#{playlist_id}/tracks", [201], JSON.dump(params), false)
     end
 
     # Removes tracks from playlist
